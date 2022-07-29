@@ -1,7 +1,20 @@
-<form class="form" #frmLogin="ngForm" (ngSubmit)="onLogin(frmLogin)">
-  <h2 class="form__title">Inicia Sesión</h2>
+<form class="form" #frmLogin="ngForm" (ngSubmit)="onRegister(frmLogin)">
+  <h2 class="form__title">Registro</h2>
 
   <div class="form__container">
+    <div class="form__group">
+      <input
+        type="text"
+        id="username"
+        name="nombre"
+        class="form__input"
+        placeholder="Nombre"
+        ngModel
+        required
+      />
+      <label for="nombre" class="form__label">Nombre:</label>
+      <span class="form_line"></span>
+    </div>
     <div class="form__group">
       <input
         type="text"
@@ -12,7 +25,7 @@
         ngModel
         required
       />
-      <label for="nombre" class="form__label">Correo:</label>
+      <label for="correo" class="form__label">Correo:</label>
       <span class="form_line"></span>
     </div>
     <div class="form__group">
@@ -28,9 +41,7 @@
       <label for="password" class="form__label">Contraseña:</label>
       <span class="form_line"></span>
     </div>
-    <input type="submit" class="form__submit" value="Ingresar" />
-  </div>
-  <div class="recover">
-    <p>No recuerdas tu contraseña? recuperala </p><a href="recover">aquí</a>
+    <input type="submit" class="form__submit" value="Registrarse" />
   </div>
 </form>
+

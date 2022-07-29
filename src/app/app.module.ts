@@ -8,6 +8,7 @@ import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
 import { AccessModule } from './access/access.module';
 import { ProductosModule } from './productos/productos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { ProductosModule } from './productos/productos.module';
     BrowserModule,
     AppRoutingModule,
     AccessModule,
-    ProductosModule
+    ProductosModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
