@@ -1,5 +1,7 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { correoI } from 'src/app/Interfaces/correoI';
 import { UserService } from 'src/app/servicios/user.service';
 import Swal from 'sweetalert2';
@@ -19,11 +21,11 @@ correo:correoI|undefined;
     this.service.recoverEmail(form.value).subscribe((res)=>{
       if(res){
         this.correo = res;
-        console.log(this.correo);
+
         Swal.fire({
 
           title: 'Tu contraseña es ',
-          html:'<pre> '+ this.correo +' </pre>',
+          html:'<pre>  </pre>',
 
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
