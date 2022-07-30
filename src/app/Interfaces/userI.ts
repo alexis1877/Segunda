@@ -3,6 +3,8 @@ export interface userI{
   nombre: string,
   id_rol: number,
   password: string,
-  correo: string
+  correo: string,
+  telefono:string,
+  direccion:string
 
 }
