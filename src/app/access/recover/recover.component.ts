@@ -21,11 +21,13 @@ correo:correoI|undefined;
     this.service.recoverEmail(form.value).subscribe((res)=>{
       if(res){
         this.correo = res;
+        console.log(res.correo);
+        console.log(Object.values(this.correo));
 
         Swal.fire({
 
-          title: 'Tu contraseña es ',
-          html:'<pre>  </pre>',
+          title: 'Tu contraseña es '+ Object.values(this.correo),
+          html:'',
 
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
