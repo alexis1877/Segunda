@@ -9,22 +9,27 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 import { AccessModule } from './access/access.module';
 import { ProductosModule } from './productos/productos.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductosDetailComponent } from './productos-detail/productos-detail.component';
+import { CarritoModule} from './carrito/carrito.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule }   from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent,
-    ProductosDetailComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AccessModule,
     ProductosModule,
-    HttpClientModule
+    HttpClientModule,
+    CarritoModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [],

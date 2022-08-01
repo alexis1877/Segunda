@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './access/account/account.component';
 import { LoginComponent } from './access/login/login.component';
 import { RecoverComponent } from './access/recover/recover.component';
 import { RegisterComponent } from './access/register/register.component';
 import { HomeComponent } from './home/home.component';
-import { ProductosDetailComponent } from './productos-detail/productos-detail.component';
 import { ProductosComponent } from './productos/productos/productos.component';
+import { AgregarComponent } from './carrito/agregar/agregar.component';
+import { AgregaproductoComponent } from './carrito/agregaproducto/agregaproducto.component';
 
 const routes: Routes = [
 
@@ -24,9 +24,6 @@ const routes: Routes = [
   component: ProductosComponent
 },
 {
-  path:'productos/:id',component:ProductosDetailComponent
-},
-{
   path:'register',
   component: RegisterComponent
 },
@@ -34,10 +31,20 @@ const routes: Routes = [
   path:'recover',
   component: RecoverComponent
 },
-{
-  path:'account',
-  component: AccountComponent
+{//AQUI el de agregar
+  path:'agregar',
+  component: AgregarComponent
 },
+{
+  path:'agregaproducto',
+  component: AgregaproductoComponent
+},
+
+{
+  path:'**',
+  redirectTo:"home"
+}
+
 
 ];
 
