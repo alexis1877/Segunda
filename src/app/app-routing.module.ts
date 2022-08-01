@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'recover', component: RecoverComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'agregar', component: AgregarComponent},
-  {path: 'modificar', component:ModificarComponent},
+  {path: 'modificar/:id', component:ModificarComponent},
   {path: 'descripcion/productos', component: DescripcionProductosComponent},
   {path: 'listado/productos', component: ListadoProductosComponent}
 ];
