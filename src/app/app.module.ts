@@ -3,29 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './plantillas/header/header.component';
-import { FooterComponent } from './plantillas/footer/footer.component';
+import { InicioComponent } from './Components/inicio/inicio.component';
+import { ListadoProductosComponent } from './Components/listado-productos/listado-productos.component';
+import { DescripcionProductosComponent } from './Components/descripcion-productos/descripcion-productos.component';
+import { HeaderComponent } from './Plantillas/header/header.component';
 import { AccessModule } from './access/access.module';
-import { ProductosModule } from './productos/productos.module';
-import { HttpClientModule } from '@angular/common/http';
-import { ProductosDetailComponent } from './productos-detail/productos-detail.component';
+import { HomeComponent } from './Components/home/home.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { AgregarComponent } from './Components/agregar/agregar.component';
+import { ModificarComponent } from './Components/modificar/modificar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    InicioComponent,
+    ListadoProductosComponent,
+    DescripcionProductosComponent,
     HeaderComponent,
-    FooterComponent,
-    ProductosDetailComponent
+    HomeComponent,
+    AgregarComponent,
+    ModificarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AccessModule,
-    ProductosModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -26,6 +26,28 @@
                 <p class="mb-0">Nombre</p>
               </div>
 
+              <!--
+
+                <div class="form__group">
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        class="form__input"
+        placeholder="dirección"
+        ngModel
+        required
+      />
+      <label for="direccion" class="form__label">Dirección:</label>
+      <span class="form_line"></span>
+    </div>
+
+<ng-content select="selector"></ng-content> <div class="col-sm-9">
+                <p class="text-muted mb-0">Johnatan Smith</p>
+              </div>
+
+
+              -->
               <div class="form__group col-sm-9" style="display: none">
                 <input
                   type="text"
@@ -107,23 +129,17 @@
                 />
               </div>
               <hr />
-              <div class="d-flex justify-content-center mb-4">
+              <div class="d-flex justify-content-center mb-2">
                 <input
                   type="submit"
                   class="form__submit btn btn-outline-primary ms-1"
                   value="Registrarse"
                 />
               </div>
-
             </div>
           </div>
         </div>
       </form>
-      <div class="d-flex justify-content-center mb-4">
-        <button (click)="deleteUser()" class="form__submit btn btn-outline-primary ms-1">
-          Eliminar cuenta
-        </button>
-      </div>
     </div>
   </div>
 </section>
