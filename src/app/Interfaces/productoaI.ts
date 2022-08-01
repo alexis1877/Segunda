@@ -1,4 +1,4 @@
-export interface Producto {
+export interface ProductoaI {
   id?: string;
   nombre_producto?: string;
   precio_producto?: string;
@@ -7,5 +7,5 @@ export interface Producto {
   Nombre_Sub_Categoria?: string;
   Cat?:string;
   url?: string;
-
+  id_sub_categoria:string
 }

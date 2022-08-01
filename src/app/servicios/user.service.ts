@@ -126,19 +126,30 @@ export class UserService {
   //Agrega un producto
 
   agregarProducto(producto: Producto) {
-    return this.http.post(this.URL + '/productos/crear', producto);
+    return this.http.post(this.URL + 'productos/crear', producto);
   }
 
   //Actualizar producto
 
-  actualizarProducto(id: string, producto: Producto) {
-    this.http.put(this.URL + '/productos/actualizar/' + id, producto);
+  actualizarProducto(id: string, producto: Producto): Observable<any> {
+   return this.http.put<any>(this.URL + 'productos/actualizar/' + id, producto);
   }
 
   //Borra un producto
 
   eliminarProducto(id: string) {
-    return this.http.delete(this.URL + '/productos/eliminar/' + id);
+    return this.http.delete(this.URL + 'productos/eliminar/' + id);
+  }
+
+
+  getCategoria(): Observable<any>{
+    return this.http.get<any>(this.URL + 'categorias');
+  }
+
+  //SubCategoria
+
+  getSubCategoria(){
+    return this.http.get(this.URL + 'subcategorias');
   }
 
   //Termina Productos Jhonatan

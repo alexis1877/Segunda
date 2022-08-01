@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe((res) => {
       if (res) {
         this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
+
           this.router.navigate(['/home']);
+
         });
       } else {
         Swal.fire({
