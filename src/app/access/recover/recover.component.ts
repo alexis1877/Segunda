@@ -1,9 +1,7 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { correoI } from 'src/app/Interfaces/correoI';
-import { UserService } from 'src/app/servicios/user.service';
+import { correoI } from 'src/app/interfaces/correoI';
+import { ServiceService } from 'src/app/services/service.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,11 +11,13 @@ import Swal from 'sweetalert2';
 })
 export class RecoverComponent implements OnInit {
   correo: correoI | undefined;
-  constructor(private service: UserService) {}
+
+  constructor(private ServiceService: ServiceService) {}
 
   ngOnInit(): void {}
+
   onRecover(form: NgForm) {
-    this.service.recoverEmail(form.value).subscribe((res) => {
+    this.ServiceService.recoverEmail(form.value).subscribe((res) => {
       if (res) {
         this.correo = res;
         console.log(res.correo);

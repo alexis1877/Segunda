@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/servicios/user.service';
+import { ServiceService } from 'src/app/services/service.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,24 +10,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private service: UserService, private router: Router) {}
+  constructor(private ServiceService: ServiceService, private router: Router) {}
 
   ngOnInit(): void {}
+
   onRegister(form: NgForm): void {
     console.log(form.value);
-    this.service.createUser(form.value).subscribe(
+    this.ServiceService.createUser(form.value).subscribe(
       (res) => {
         if (res) {
-          Swal.fire({
-            title: 'Ahora estas registrado, ingresa tus datos para acceder',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown',
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp',
-            },
-          });
-          this.router.navigateByUrl('login');
+          this.router.navigateByUrl('home');
           console.log('Usuario Creado');
         }
       },
