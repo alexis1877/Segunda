@@ -9,13 +9,15 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 import { AccessModule } from './access/access.module';
 import { ProductosModule } from './productos/productos.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductosDetailComponent } from './productos-detail/productos-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProductosDetailComponent
   ],
   imports: [
     BrowserModule,

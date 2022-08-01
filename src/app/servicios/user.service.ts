@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { userI } from '../Interfaces/userI';
 import { userlogI } from '../Interfaces/userlogI';
 import { correoI } from '../Interfaces/correoI';
+import { Producto } from '../Interfaces/producto';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +15,14 @@ export class UserService {
   URL = 'http://localhost:4000/';
   constructor(private http: HttpClient) {}
 
-  login(usuario: any): Observable<any> {
-    console.log('entraste');
-    console.log(usuario);
+  login(usuario: any,): Observable<any> {
+
     return this.http.post<any>(this.URL + 'login', usuario).pipe(
       tap((res: userI) => {
         if (res) {
           this.saveUsuario(res.id_usuario);
+          this.crearTicket(res.id_usuario);
+
         }
       })
     );
@@ -36,6 +38,18 @@ export class UserService {
           }
         })
       );
+  }
+
+  crearTicket(id_usuario:any){
+    const id = {
+      id: id_usuario,
+      // ACCES_ID: userid
+    };
+    return this.http.post(this.URL + 'generaticket', id).subscribe((res)=>{
+      console.log("Entraste el numero es" + res);
+
+     this.saveTicket(res);
+    })
   }
 
   getId() {
@@ -55,7 +69,7 @@ export class UserService {
       id_usuario: localStorage.getItem('ACCES_ID'),
       // ACCES_ID: userid
     };
-    console.log(iduser);
+
     return this.http.post<userlogI>(this.URL + 'usuario/getUsuario', iduser);
   }
 
@@ -63,6 +77,10 @@ export class UserService {
   private saveUsuario(userId: number): void {
     const str = String(userId);
     localStorage.setItem('ACCES_ID', str);
+  }
+  private saveTicket(ticketId: any): void {
+    const str = String(ticketId);
+    localStorage.setItem('TICKET_ID', str);
   }
 
   updateUser(usuario: any): Observable<any> {
@@ -76,4 +94,52 @@ export class UserService {
         })
       );
   }
+
+  deleteUser(): Observable<any>{
+    const iduser = {
+      id: localStorage.getItem('ACCES_ID'),
+          };
+    return this.http.post<any>(this.URL + 'usuario/borrar', iduser).pipe(tap((res:any)=>{
+      if(res){
+        console.log(res);
+    }
+    }))
+
+  }
+
+
+
+  //Inicia Productos Jhonatan
+
+  //Muestra todos los productos
+
+  getProductos(){
+    return this.http.get<any>(this.URL + 'productos');
+  }
+
+  //Muestra un producto
+
+  getProductosIdentificador(id: string): Observable<Producto> {
+    return this.http.get<Producto>(this.URL + 'productos/' + id)
+  }
+
+  //Agrega un producto
+
+  agregarProducto(producto: Producto) {
+    return this.http.post(this.URL + '/productos/crear', producto);
+  }
+
+  //Actualizar producto
+
+  actualizarProducto(id: string, producto: Producto) {
+    this.http.put(this.URL + '/productos/actualizar/' + id, producto);
+  }
+
+  //Borra un producto
+
+  eliminarProducto(id: string) {
+    return this.http.delete(this.URL + '/productos/eliminar/' + id);
+  }
+
+  //Termina Productos Jhonatan
 }

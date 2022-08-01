@@ -5,6 +5,7 @@ import { LoginComponent } from './access/login/login.component';
 import { RecoverComponent } from './access/recover/recover.component';
 import { RegisterComponent } from './access/register/register.component';
 import { HomeComponent } from './home/home.component';
+import { ProductosDetailComponent } from './productos-detail/productos-detail.component';
 import { ProductosComponent } from './productos/productos/productos.component';
 
 const routes: Routes = [
@@ -23,6 +24,9 @@ const routes: Routes = [
   component: ProductosComponent
 },
 {
+  path:'productos/:id',component:ProductosDetailComponent
+},
+{
   path:'register',
   component: RegisterComponent
 },
@@ -34,10 +38,6 @@ const routes: Routes = [
   path:'account',
   component: AccountComponent
 },
-{
-  path:'**',
-  redirectTo:"home"
-}
 
 ];
 

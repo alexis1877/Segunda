@@ -3,6 +3,7 @@ import { UserService } from 'src/app/servicios/user.service';
 import { userlogI } from 'src/app/Interfaces/userlogI';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -18,7 +19,7 @@ export class AccountComponent implements OnInit {
   direccion: any;
   usuarrio: any;
 
-  constructor(private service: UserService) {}
+  constructor(private service: UserService, private router: Router ) {}
 
   ngOnInit(): void {
     this.getAccount();
@@ -68,5 +69,23 @@ export class AccountComponent implements OnInit {
         }
       );
 
+  }
+
+  deleteUser(){
+    this.service.deleteUser().subscribe((res)=>{
+      Swal.fire({
+        title: 'Cuenta Eliminada',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown',
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp',
+        },
+      }).then()
+      this.service.logOut()
+
+    })
+    this.router.navigateByUrl('home').then(()=>
+    this.router.navigate(['home']));
   }
 }

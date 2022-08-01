@@ -9,9 +9,9 @@ import { UserService } from 'src/app/servicios/user.service';
 })
 export class HeaderComponent implements OnInit {
   bandera: boolean = false;
-  admin:boolean = false;
+  admin: boolean = false;
   id_usuario = localStorage.getItem('ACCES_ID');
-  id_rol : any;
+  id_rol: any | undefined;
   user: userlogI | undefined;
   constructor(private service: UserService) {}
 
@@ -23,8 +23,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.bandera = false;
     }
-
-
   }
   logOut() {
     this.service.logOut();
@@ -33,19 +31,18 @@ export class HeaderComponent implements OnInit {
   getAccount(): void {
     this.service.getaccount().subscribe(
       (res) => {
-
+        if(res !== null){
         this.user = res;
-        this.id_rol= Object.values(res.id_rol);
-        console.log(res.id_rol);
+
         this.id_rol = res.id_rol;
-        console.log(this.id_rol);
-        if(this.id_rol == 1){
+
+        if (this.id_rol == 1) {
           this.admin = true;
-        }
-        else{
+        } else {
           this.admin = false;
         }
-       // console.log(this.user);
+        // console.log(this.user);
+      }
       },
       (err) => console.error(err)
     );

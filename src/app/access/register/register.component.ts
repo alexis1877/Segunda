@@ -18,7 +18,16 @@ export class RegisterComponent implements OnInit {
     this.service.createUser(form.value).subscribe(
       (res) => {
         if (res) {
-          this.router.navigateByUrl('home');
+          Swal.fire({
+            title: 'Ahora estas registrado, ingresa tus datos para acceder',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown',
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp',
+            },
+          });
+          this.router.navigateByUrl('login');
           console.log('Usuario Creado');
         }
       },
