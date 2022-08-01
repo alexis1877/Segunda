@@ -5,46 +5,40 @@ import { UserService } from 'src/app/servicios/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  bandera: boolean = false;
-  admin: boolean = false;
-  id_usuario = localStorage.getItem('ACCES_ID');
-  id_rol: any | undefined;
-  user: userlogI | undefined;
-  constructor(private service: UserService) {}
+bandera:boolean=false;
+id_usuario = localStorage.getItem('ACCES_ID');
+user:userlogI |undefined;
+  constructor(private service: UserService) { }
 
   ngOnInit(): void {
+
     this.getAccount();
     this.id_usuario = localStorage.getItem('ACCES_ID');
-    if (this.id_usuario) {
-      this.bandera = true;
-    } else {
-      this.bandera = false;
+    console.log(this.id_usuario);
+    if(this.id_usuario){
+      console.log(this.bandera);
+      this.bandera =true;
+      console.log(this.bandera);
+    }
+    else{
+      this.bandera=false;
     }
   }
-  logOut() {
+  logOut(){
     this.service.logOut();
   }
 
-  getAccount(): void {
-    this.service.getaccount().subscribe(
-      (res) => {
-        if(res !== null){
-        this.user = res;
+  getAccount():void{
+    this.service.getaccount().subscribe((res)=>{
 
-        this.id_rol = res.id_rol;
+      this.user = res;
+      console.log(this.user);
 
-        if (this.id_rol == 1) {
-          this.admin = true;
-        } else {
-          this.admin = false;
-        }
-        // console.log(this.user);
-      }
-      },
-      (err) => console.error(err)
-    );
+    },
+    (err)=> console.error(err));
   }
+
 }
